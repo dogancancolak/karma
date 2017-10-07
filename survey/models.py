@@ -2,16 +2,10 @@ from django.db import models
 
 
 class SurveyItem(models.Model):
-    surveyQuestion = models.TextField(max_length=255)
+    surveyQuestion = models.CharField(max_length=255)
+    value = models.BooleanField(default=None)
 
-    def get_question(self):
-        choices = SurveyChoice.objects.filter(question=self)
-        return {
-            'question': self.surveyQuestion,
-            'choices': choices,
-        }
-
-
-class SurveyChoice(models.Model):
-    text = models.TextField(max_length=255)
-    question = models.ForeignKey(SurveyItem)
+class SurveyValue(models.Model):
+    userId = models.IntegerField() # should be user later
+    surveyItem = models.ForeignKey(SurveyItem)
+    answer = models.BooleanField()

@@ -1,8 +1,8 @@
 from django.db import models
 
 class User(models.Model):
-    firstName = models.TextField(max_length=255)
-    lastName = models.TextField(max_length=255)
+    firstName = models.CharField(max_length=255)
+    lastName = models.CharField(max_length=255)
     rewardCount = models.IntegerField(default=0)
     rewardProgress = models.IntegerField(default=0)
     surveyCount = models.IntegerField(default=0)
